@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
+ 
 # Book model in the library
 class Book(models.Model):
     title = models.CharField(max_length=255)
@@ -11,9 +11,9 @@ class Book(models.Model):
     isbn = models.CharField(max_length=13, unique=True)   
     published_date = models.DateField()
     copies_available = models.PositiveIntegerField(default=1)
-
+    
     def __str__(self):
-        return self.title
+        return f"{self.title} by {self.author}"
 
 # UserProfile model to extend User model with additional information
 
@@ -42,3 +42,9 @@ class Transaction(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.book.title}"
+
+
+
+
+ 
+   
