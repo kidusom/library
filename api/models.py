@@ -11,9 +11,10 @@ class Book(models.Model):
     isbn = models.CharField(max_length=13, unique=True)   
     published_date = models.DateField()
     copies_available = models.PositiveIntegerField(default=1)
-    
+
     def __str__(self):
-        return f"{self.title} by {self.author}"
+        return self.title    
+     
 
 # UserProfile model to extend User model with additional information
 
