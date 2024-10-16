@@ -23,7 +23,7 @@ class BookViewSet(viewsets.ModelViewSet):
         if available == 'true':
             queryset = queryset.filter(copies_available__gt=0)
         if title:
-            queryset = queryset.filter(title__icontains=title)
+            queryset = queryset.filter(title__icontains=title) #  Case-Insensitive Searches
         if author:
             queryset = queryset.filter(author__icontains=author)
         if isbn:
@@ -37,7 +37,7 @@ class UserViewSet(viewsets.ModelViewSet):
 class TransactionViewSet(viewsets.ViewSet):
     permission_classes = [IsAuthenticated]
 
-    @action(detail=False, methods=['post'])
+    @action(detail=False, methods=['post']) # The @action  is used to define custom actions for a ViewSet. It allows you to add additional routes (endpoints) to the standard CRUD  by the ModelViewSet or ViewSet.
     def check_out(self, request):
         user = request.user
         book_id = request.data.get('book_id')
@@ -59,7 +59,7 @@ class TransactionViewSet(viewsets.ViewSet):
         except Book.DoesNotExist:
             return Response({'error': 'Book does not exist'}, status=status.HTTP_404_NOT_FOUND)
 
-    @action(detail=False, methods=['post'])
+    @action(detail=False, methods=['post']) # The @action(detail=False, methods=['get']) decorator in this context defines a custom action that allows the authenticated user to retrieve their borrowing history. This method provides a GET endpoint that returns all the Transaction instances associated with the logged-in user.
     def return_book(self, request):
         user = request.user
         book_id = request.data.get('book_id')
