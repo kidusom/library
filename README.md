@@ -1,9 +1,30 @@
-Core Features  
-
 CRUD Operations:
 Books:  create, read, update, and delete books.
 Users:  user registration and management.
 Transactions: users can borrow and return books. 
+
+
+API Endpoints
+
+ 
+Register a User ---   POST /api/users/  ---  Create a new user
+List Users  ---   GET  /api/users/  ---  List all users
+Get User Details  ---  GET  /api/users/{id}/  ---  Retrieve a specific user's details
+Update User  ---  PUT/PATCH /api/users/{id}/  ---  Update a specific user
+Delete User  ---  DELETE    /api/users/{id}/  ---  Delete a specific user
+Obtain JWT Token  ---  POST /api/token/  ---  Obtain a JWT token
+Refresh JWT Token  ---  POST /api/token/refresh/ --- Refresh a JWT token
+List All Books --- GET  /api/books/  ---  List all books, with optional filters
+Create a Book --- POST /api/books/  ---  Add a new book
+Get Book Details  ---  GET  /api/books/{id}/  ---  Retrieve a specific book's details
+Update a Book --- PUT/PATCH /api/books/{id}/  ---  Update a book's details
+Delete a Book --- DELETE    /api/books/{id}/  ---  Delete a specific book
+Borrow a Book --- POST /api/transactions/check_out/ --- Borrow (check out) a book
+Return a Book --- POST /api/transactions/return/   ---  Return a borrowed book
+View Borrowing History  ---  GET  /api/transactions/history/  ---  View current user's borrowing history
+
+
+Examples
 
 1.Create user
     Post  >>  https://kidusom.pythonanywhere.com/api/users/
